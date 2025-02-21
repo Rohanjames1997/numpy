@@ -43,7 +43,7 @@ jobs:
         os: [ubuntu-22.04, ubuntu-22.04-arm]
     runs-on: ${{ matrix.os }}
     # To enable this workflow on a fork, comment out:
-    if: github.repository == 'numpy/numpy'
+    # if: github.repository == 'numpy/numpy'
     steps:
       - name: Checkout NumPy
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
@@ -74,7 +74,6 @@ jobs:
     permissions: {}
     needs: [build-wasm-emscripten]
     if: >-
-      (github.repository == 'numpy/numpy') &&
       (github.event_name == 'workflow_dispatch' && github.event.inputs.push_wheels == 'true') ||
       (github.event_name == 'schedule')
     steps:
